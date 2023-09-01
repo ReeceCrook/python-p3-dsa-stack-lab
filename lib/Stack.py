@@ -13,12 +13,10 @@ class Stack:
     def push(self, item):
         if len(self.items) < self.limit:
             self.items.append(item)
-        else:
-            raise Exception("Stack is full")
 
     def pop(self):
         if len(self.items) != 0:
-            self.items.pop()
+            return self.items.pop()
         else:
             return None
 
@@ -37,6 +35,14 @@ class Stack:
     def search(self, target):
         while True:
             try:
-                return self.items.index(target)
+                index = self.items.index(target)
+                last_index = self.items.index(self.items[-1])
+                if index == 0:
+                    return len(self.items) - 1
+                else:
+                    if index == 1:
+                        return last_index - index
+                    else:
+                        return last_index - index
             except:
                 return -1
